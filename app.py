@@ -13,7 +13,7 @@ firebase_admin.initialize_app(cred, {
 app = Flask(__name__)
 
 @app.route('/interior', methods=['GET'])
-def list_images():
+def list_images_inside():
     bucket = storage.bucket()
     interior = []
     blobs = bucket.list_blobs(prefix='Interior/')
@@ -25,7 +25,7 @@ def list_images():
     return jsonify(interior)
     
 @app.route('/exterior', methods=['GET'])
-def list_images():
+def list_images_outside():
     bucket = storage.bucket()
     exterior = []
     blobs = bucket.list_blobs(prefix='Exterior/')
